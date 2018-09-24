@@ -2,16 +2,25 @@ import React, { Component } from 'react'
 
 
 class SearchBooks extends Component {
-    state = {
-        query: '',
-       
-    }
+  constructor(props){
+    super(props);
+    this.state = {
+      query: '',
+     
+  }
+  
+  }
 
-    updateQuery = (query) => {
-        this.setState({query: query.trim() })
-      }
+  
+
+  updateQuery = (query) => {
+      this.setState({query })
+    }
+    
 
     render() {
+      
+      const query = this.state.query;
         return(
             <div className="search-books">
             <div className="search-books-bar">
@@ -30,12 +39,15 @@ class SearchBooks extends Component {
                   placeholder="Search by title or author"
                   value={this.state.query}
                   onChange={(event) => this.updateQuery(event.target.value)}
+                  
                   />
 
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"></ol>
+              <ol className="books-grid">
+                
+              </ol>
             </div>
           </div>
         );

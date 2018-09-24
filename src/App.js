@@ -1,10 +1,8 @@
 import React from 'react'
-import * as BooksAPI from './BooksAPI'
+
 import './App.css'
-import SearchBooks from './SearchBooks';
-import CurrentlyReading from './CurrentlyReading'
-import WantToRead from './WantToRead';
-import CompletedReads from './CompletedReads'
+import SearchBooks from './SearchBooks'
+import Main from './Main'
 
 
 class BooksApp extends React.Component {
@@ -16,47 +14,32 @@ class BooksApp extends React.Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     showSearchPage: false,
-    availableBooks: []
+    
   }
 
-  componentDidMount() {
-    BooksAPI.getAll().then((availableBooks) => {
-      this.setState({ availableBooks })
-    })
-  }
+  
 
   render() {
     return (
+      
       <div className="app">
         {this.state.showSearchPage === true && (
           <SearchBooks 
+            query={this.props.query}
             onClick={() => this.setState({ showSearchPage: false })}
+            onUdateQuery={this.props.updateQuery}
             />
         )}
 
         {this.state.showSearchPage === false && (
-          <div className="list-books">
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
-            <div className="list-books-content">
-              <div>
-                
-                <CurrentlyReading />
-
-                <WantToRead />
-
-                <CompletedReads />
-
-              </div>
-            </div>
-            <div className="open-search">
-              <a 
-              onClick={() => this.setState({ showSearchPage: true })}
-              >Add a book</a>
-            </div> 
-          </div>
+          <Main
+          />
         )} 
+        <div className="open-search">
+          <a 
+          onClick={() => this.setState({ showSearchPage: true })}
+          >Add a book</a>
+        </div> 
       </div>
     )
   }
