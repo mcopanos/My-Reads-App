@@ -17,6 +17,7 @@ class CompletedReads extends Component {
                           <li key={book.id}>
                             <Book 
                               book={book}
+                              updateShelf={this.props.updateShelf}
                             /> 
                           </li>
                         ))

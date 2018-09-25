@@ -12,7 +12,14 @@ class Main extends Component {
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
-      
+    })
+  }
+
+  updateShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf)
+
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books })
     })
   }
 
@@ -28,17 +35,17 @@ class Main extends Component {
                 
                 <CurrentlyReading
                   books={this.state.books}
-                  
+                  updateShelf={this.updateShelf}
                 />
 
                 <WantToRead 
                   books={this.state.books}
-                  
+                  updateShelf={this.updateShelf}                  
                 />
 
                 <CompletedReads 
                   books={this.state.books}
-                 
+                  updateShelf={this.updateShelf}
                 />
 
               </div>

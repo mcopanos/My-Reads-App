@@ -10,11 +10,12 @@ class CurrentlyReading extends Component {
                     <ol className="books-grid">
                     {
                       this.props.books.filter(book =>
-                        book.shelf ===  'read')
+                        book.shelf ===  'currentlyReading')
                         .map(book => (
                           <li key={book.id}>
                             <Book
                               book={book} 
+                              updateShelf={this.props.updateShelf}
                             />
                           </li>
                         ))
