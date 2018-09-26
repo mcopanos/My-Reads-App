@@ -16,12 +16,24 @@ class Main extends Component {
   }
 
   updateShelf = (book, shelf) => {
-    BooksAPI.update(book, shelf)
-
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books })
-    })
+    BooksAPI.update(book, shelf).then(
+      this.setState(prevState => ({
+        books: prevState.books.map(b => {
+          if (b.id === book.id) {
+            b.shelf = shelf;
+          }
+          return b
+        })
+      }))
+    )
+    // BooksAPI.getAll().then((books) => {
+    //   this.setState({ books })
+      
+    // })
+    
   }
+
+  
 
     render() {
       console.log(this.state.books);
@@ -40,7 +52,7 @@ class Main extends Component {
 
                 <WantToRead 
                   books={this.state.books}
-                  updateShelf={this.updateShelf}                  
+                  updateShelf={this.updateShelf}                                  
                 />
 
                 <CompletedReads 

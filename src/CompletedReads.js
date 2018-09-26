@@ -18,6 +18,8 @@ class CompletedReads extends Component {
                             <Book 
                               book={book}
                               updateShelf={this.props.updateShelf}
+                              currentShelf={this.props.currentShelf}
+                              currentShelf="read" 
                             /> 
                           </li>
                         ))
