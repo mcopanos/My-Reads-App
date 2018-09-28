@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-//import CategoryButton from './CategoryButton'
-//import SearchBooks from './SearchBooks';
+
 
 class Book extends Component {
 
@@ -21,7 +20,6 @@ class Book extends Component {
                     )}
                     // value={this.props.book.shelf}
                     value={this.props.currentShelf} 
-                    
                 >
                     <option value="move" disabled>Move to...</option>
                     <option value="none">None</option>
