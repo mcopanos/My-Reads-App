@@ -16,7 +16,7 @@ class WantToRead extends Component {
                             <Book 
                               book={book}
                               updateShelf={this.props.updateShelf}
-                              currentShelf="wantToRead" 
+                              currentShelf='wantToRead'
                             />
                           </li>
                         ))

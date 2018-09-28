@@ -2,41 +2,12 @@ import React, { Component } from 'react'
 import CurrentlyReading from './CurrentlyReading'
 import WantToRead from './WantToRead';
 import CompletedReads from './CompletedReads'
-import * as BooksAPI from './BooksAPI'
 
 class Main extends Component {
-  state = {
-    books: [],
-  }
-  
-  componentDidMount() {
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books })
-    })
-  }
-
-  updateShelf = (book, shelf) => {
-    BooksAPI.update(book, shelf).then(
-      this.setState(prevState => ({
-        books: prevState.books.map(b => {
-          if (b.id === book.id) {
-            b.shelf = shelf;
-          }
-          return b
-        })
-      }))
-    )
-    // BooksAPI.getAll().then((books) => {
-    //   this.setState({ books })
-      
-    // })
-    
-  }
-
-  
-
+   
     render() {
-      console.log(this.state.books);
+      let books = this.props.books
+      console.log(this.props.books);
         return(
             <div className="list-books">
             <div className="list-books-title">
@@ -46,18 +17,18 @@ class Main extends Component {
               <div>
                 
                 <CurrentlyReading
-                  books={this.state.books}
-                  updateShelf={this.updateShelf}
+                  books={books}
+                  updateShelf={this.props.updateShelf}
                 />
 
                 <WantToRead 
-                  books={this.state.books}
-                  updateShelf={this.updateShelf}                                  
+                  books={books}
+                  updateShelf={this.props.updateShelf}                                  
                 />
 
                 <CompletedReads 
-                  books={this.state.books}
-                  updateShelf={this.updateShelf}
+                  books={books}
+                  updateShelf={this.props.updateShelf}
                 />
 
               </div>
