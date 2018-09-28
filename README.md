@@ -10,5 +10,5 @@ and
 
 npm start
 
-Now a server should be running the app in localhost
+Now a server should be running the app
 
